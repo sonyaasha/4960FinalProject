@@ -3,18 +3,13 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { _ACCESS_TOKEN } from '../shared/constants'
 const EditEvent = () => {
-    // const { eventName } = useParams();
     const { eventId } = useParams(); 
     const [event, setEvent] = useState([]); 
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(true);
-    // const isLoaded = true;
-    // const [event, setEvent] = useState([]);
 
     useEffect(() => {
-       // console.log(`-- useEffect --`, _ACCESS_TOKEN )
-       // console.warn("useEffect");
        fetch("http://localhost:8082/sobjects/MyEvent__c/" + eventId, 
         {
             method: "GET",
@@ -26,7 +21,6 @@ const EditEvent = () => {
             .then(res => res.json())
             .then(
                 (data) => {
-                    // console.log(data);
                     setEvent(data);
                     setIsLoaded(true);
                 },
@@ -94,12 +88,6 @@ const EditEvent = () => {
 
     const saveChanges = (e) => { 
         console.log(`-- submitForm.eventName --`,  event.Name);
-        // console.log(`-- submitForm.email --`,  email);
-        // console.log(`-- submitForm.streetAddress --`,  streetAddress);
-        // console.log(`-- submitForm.city --`,  city);
-        // console.log(`-- submitForm.state --`,  state);
-        // console.log(`-- submitForm.date --`,  date);
-        // console.log(`-- submitForm.time --`,  time);
         editEvent({
             "Name": event.Name,
             "Organizer_Email__c": event.Organizer_Email__c,
@@ -117,13 +105,6 @@ const EditEvent = () => {
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {
-        // console.log(`-- submitForm.eventName --`,  eventName);
-        // console.log(`-- submitForm.email --`,  email);
-        // console.log(`-- submitForm.streetAddress --`,  streetAddress);
-        // console.log(`-- submitForm.city --`,  city);
-        // console.log(`-- submitForm.state --`,  state);
-        // console.log(`-- submitForm.date --`,  date);
-        // console.log(`-- submitForm.time --`,  time);
         return (
             <>
             <div className="container-fluid">

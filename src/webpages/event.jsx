@@ -2,14 +2,12 @@ import React, {useState, useEffect}  from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { _ACCESS_TOKEN } from '../shared/constants'
-const Event = () => {  
-    // const token = "00Daj0000037901!AQEAQMKLZPprVbIi0CQf0PLrjAOHbPk.Q2eCwzwB99mKO2.eBZcHavWRfG9MDIANOIsaUv8euHNDnMhkqExJmB8hb1UB4ZJ6" 
+const Event = () => { 
     const { eventId } = useParams(); 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [event, setEvent] = useState([]); 
     useEffect(() => {
-        // https://cunning-raccoon-oaq9b8-dev-ed.trailblaze.my.salesforce.com/services/data/v59.0/sobjects/MyEvent__c/a01aj000008oH4LAAU
         fetch("http://localhost:8082/sobjects/MyEvent__c/" + eventId, 
         {
             headers: {

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { _ACCESS_TOKEN } from '../shared/constants'
-const EventList = () => {  
-    // const token = "00Daj0000037901!AQEAQMKLZPprVbIi0CQf0PLrjAOHbPk.Q2eCwzwB99mKO2.eBZcHavWRfG9MDIANOIsaUv8euHNDnMhkqExJmB8hb1UB4ZJ6"
+const EventList = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [events, setEvents] = useState([]);
     useEffect(() => {
-        // https://cunning-raccoon-oaq9b8-dev-ed.trailblaze.my.salesforce.com/services/data/v59.0/queryAll/?q=SELECT+Name%2CDate__c%2CCity__c%2CState__c%2CIsDeleted+from+MyEvent__c+WHERE+IsDeleted+%3D+false
         fetch("http://localhost:8082/queryAll/?q=SELECT+Name%2CDate__c%2CCity__c%2CState__c+from+MyEvent__c+WHERE+IsDeleted+%3D+false",  
         { 
             headers: {

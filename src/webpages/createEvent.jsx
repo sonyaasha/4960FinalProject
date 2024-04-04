@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { _ACCESS_TOKEN } from '../shared/constants'
 const CreateEvent = () => {
-    // const { eventName } = useParams();
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(true);
     const [eventName, setEventName] = useState(""); // useState("Default Value"); 
@@ -14,12 +12,6 @@ const CreateEvent = () => {
     const [state, setState] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
-    // const isLoaded = true;
-    // const [event, setEvent] = useState([]);
-
-    useEffect(() => {
-       // console.log(`-- useEffect --`, _ACCESS_TOKEN )
-    })
     
     const createEvent = (data) => {
         const {Name, Organizer_Email__c} = data;
@@ -50,18 +42,11 @@ const CreateEvent = () => {
     }
 
     const submitForm = (e) => { 
-        console.log(`-- submitForm.eventName --`,  eventName);
-        console.log(`-- submitForm.email --`,  email);
-        console.log(`-- submitForm.streetAddress --`,  streetAddress);
-        console.log(`-- submitForm.city --`,  city);
-        console.log(`-- submitForm.state --`,  state);
-        console.log(`-- submitForm.date --`,  date);
-        console.log(`-- submitForm.time --`,  time);
         createEvent({
             "Name": eventName,
             "Organizer_Email__c": email,
             "City__c": city,
-            // add description
+            "Description__c": description,
             "State__c": state,
             "Street_Address__c": streetAddress,
             "Date__c": date,
@@ -104,7 +89,6 @@ const CreateEvent = () => {
                                     onChange={(event) => {
                                         const target = event.target;
                                         const value = target.value;
-                                        // const name = target.name; 
                                         setEventName(value);
                                        
                                     }}
@@ -119,7 +103,6 @@ const CreateEvent = () => {
                                     onChange={(event) => {
                                         const target = event.target;
                                         const value = target.value;
-                                        // const name = target.name; 
                                         setDescription(value);
                                        
                                     }}
@@ -135,7 +118,6 @@ const CreateEvent = () => {
                                 onChange={(event) => {
                                     const target = event.target;
                                     const value = target.value;
-                                    // const name = target.name; 
                                     setEmail(value);
                                    
                                 }}
@@ -150,7 +132,6 @@ const CreateEvent = () => {
                                 onChange={(event) => {
                                     const target = event.target;
                                     const value = target.value;
-                                    // const name = target.name; 
                                     setStreetAddress(value);
                                    
                                 }}
@@ -180,7 +161,6 @@ const CreateEvent = () => {
                                 onChange={(event) => {
                                     const target = event.target;
                                     const value = target.value;
-                                    // const name = target.name; 
                                     setState(value);
                                    
                                 }}
@@ -195,7 +175,6 @@ const CreateEvent = () => {
                                 onChange={(event) => {
                                     const target = event.target;
                                     const value = target.value;
-                                    // const name = target.name; 
                                     setDate(value);
                                    
                                 }}
@@ -210,7 +189,6 @@ const CreateEvent = () => {
                                 onChange={(event) => {
                                     const target = event.target;
                                     const value = target.value;
-                                    // const name = target.name; 
                                     setTime(value);
                                    
                                 }}
